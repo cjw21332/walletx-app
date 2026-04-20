@@ -194,7 +194,7 @@ function App() {
 
   const renderOverview = () => (
     <>
-      <header className="flex items-center justify-between mb-5">
+      <header className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between mb-5">
         <div>
           <p className="text-sm uppercase tracking-[0.3em] text-sky-300/75">Atmosphere</p>
           <h1 className="text-2xl sm:text-3xl font-semibold text-white">Weather Overview</h1>
@@ -209,7 +209,7 @@ function App() {
       </header>
 
       <div className="glass-card overflow-hidden rounded-[32px] border border-white/10 p-5 shadow-2xl shadow-slate-900/20">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="grid gap-5 sm:grid-cols-[1.4fr_1fr] sm:items-center">
           <div>
             <p className="text-sm uppercase tracking-[0.35em] text-sky-200/70">Current Weather</p>
             <h2 className="mt-2 text-3xl font-semibold text-white">{selectedLocation.name}</h2>
@@ -221,7 +221,7 @@ function App() {
           </div>
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="mt-6 grid gap-4 sm:grid-cols-4">
           <StatCard label="Temp" value={weather ? `${Math.round(weather.temperature)}°C` : '--'} />
           <StatCard label="Wind" value={weather ? `${Math.round(weather.windspeed)} km/h` : '--'} />
           <StatCard label="Humidity" value={weather ? `${Math.round((weather.temperature / 40) * 100)}%` : '--'} />
@@ -229,13 +229,13 @@ function App() {
         </div>
 
         <div className="mt-6 rounded-[28px] border border-white/10 bg-slate-950/30 p-4">
-          <div className="flex items-center justify-between text-sm text-slate-300">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-sm text-slate-300">
             <span>Hourly forecast</span>
             <span>Full report</span>
           </div>
-          <div className="mt-4 flex gap-3 overflow-x-auto pb-2 scroll-smooth">
+          <div className="mt-4 gap-3 overflow-x-auto pb-2 scroll-smooth sm:grid sm:grid-cols-4 sm:overflow-visible">
             {hourly.map((hour, index) => (
-              <div key={index} className="min-w-[88px] rounded-3xl border border-white/10 bg-slate-900/70 p-3 text-center">
+              <div key={index} className="min-w-[88px] rounded-3xl border border-white/10 bg-slate-900/70 p-3 text-center sm:min-w-0">
                 <p className="text-xs uppercase tracking-[0.25em] text-slate-400">{new Date(hour.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                 <p className="my-2 text-2xl">{getWeatherIcon(hour.code)}</p>
                 <p className="text-sm text-slate-200">{Math.round(hour.temp)}°</p>
@@ -249,14 +249,14 @@ function App() {
 
   const renderLocations = () => (
     <div className="glass-card rounded-[32px] border border-white/10 p-5">
-      <div className="flex items-center justify-between mb-5">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-5">
         <div>
           <p className="text-sm uppercase tracking-[0.35em] text-sky-300/70">Manage Locations</p>
           <h3 className="mt-2 text-xl font-semibold text-white">Your saved destinations</h3>
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        <div className="flex gap-3 flex-wrap">
+        <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
           <input
             value={manageSearch}
             onChange={(e) => setManageSearch(e.target.value)}
@@ -268,12 +268,12 @@ function App() {
             Add
           </button>
         </div>
-        <div className="grid gap-4">
+        <div className="grid gap-4 sm:grid-cols-2">
           {locations.map((location) => (
             <button
               key={location.id}
               onClick={() => handleLocationSelect(location)}
-              className="group flex items-center justify-between rounded-3xl border border-white/10 bg-slate-950/70 p-4 text-left transition hover:border-sky-300/50"
+              className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-slate-950/70 p-4 text-left transition hover:border-sky-300/50 sm:flex-row sm:items-center"
             >
               <div>
                 <p className="text-sm text-slate-400">{location.name}</p>
@@ -293,7 +293,7 @@ function App() {
         <p className="text-sm uppercase tracking-[0.35em] text-sky-300/70">7-Day Forecast</p>
         <h3 className="mt-2 text-xl font-semibold text-white">{selectedLocation.name} outlook</h3>
       </div>
-      <div className="grid gap-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {daily.map((day) => (
           <div key={day.date} className="rounded-3xl border border-white/10 bg-slate-950/70 p-4 shadow-inner shadow-slate-950/20">
             <div className="flex items-center justify-between gap-4">
@@ -313,8 +313,8 @@ function App() {
   )
 
   return (
-    <div className="min-h-screen pb-24">
-      <div className="mx-auto max-w-xl px-4 pt-4">
+    <div className="min-h-screen pb-32 page-shell">
+      <div className="mx-auto max-w-3xl px-4 pt-5 sm:px-6 lg:px-8">
         {error && (
           <div className="mb-5 rounded-3xl bg-rose-500/10 border border-rose-500/20 p-4 text-sm text-rose-100">
             {error}

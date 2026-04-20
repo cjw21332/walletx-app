@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <title>Atmosphere Weather</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -29,8 +29,32 @@
       .scroll-smooth {
         scroll-behavior: smooth;
       }
+      html {
+        min-height: 100%;
+      }
+      body {
+        min-height: 100vh;
+      }
+      .glass-card {
+        background: rgba(10, 25, 45, 0.78);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(148, 163, 184, 0.14);
+      }
       .text-glow {
         text-shadow: 0 8px 40px rgba(56, 189, 248, 0.18);
+      }
+      @media (min-width: 640px) {
+        .page-shell {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .page-shell {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
       }
     </style>
   </head>
