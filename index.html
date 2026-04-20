@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WalletX</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>WalletX</h1>
+      <span class="profile">👤</span>
+    </header>
+
+    <!-- Balance Card -->
+    <div class="card">
+      <p>Total Balance</p>
+      <h2>₱ 0.00</h2>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button onclick="addExpense()">+ Expense</button>
+      <button onclick="addIncome()">+ Income</button>
+    </div>
+
+    <!-- Transactions -->
+    <div class="transactions">
+      <h3>Recent Transactions</h3>
+      <ul id="list">
+        <li>Food - ₱150</li>
+        <li>Transport - ₱50</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

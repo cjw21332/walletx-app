@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0F172A;
+  color: white;
+}
+
+.app {
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card {
+  background: #1E293B;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.card h2 {
+  margin: 5px 0 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #38BDF8;
+  color: black;
+  font-weight: bold;
+}
+
+.transactions ul {
+  list-style: none;
+  padding: 0;
+}
