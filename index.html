@@ -3,60 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    <title>Atmosphere Weather</title>
+    <title>WeatherSnap: Real time delivery of weather on your Phone</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      body {
-        margin: 0;
-        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 28%),
-          linear-gradient(180deg, #07131e 0%, #0f2438 55%, #091622 100%);
-        color: #f8fafc;
-        min-height: 100vh;
-      }
-      #root {
-        min-height: 100vh;
-      }
-      .glass-card {
-        background: rgba(10, 25, 45, 0.68);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(148, 163, 184, 0.12);
-      }
-      .scroll-smooth {
-        scroll-behavior: smooth;
-      }
-      html {
-        min-height: 100%;
-      }
-      body {
-        min-height: 100vh;
-      }
-      .glass-card {
-        background: rgba(10, 25, 45, 0.78);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border: 1px solid rgba(148, 163, 184, 0.14);
-      }
-      .text-glow {
-        text-shadow: 0 8px 40px rgba(56, 189, 248, 0.18);
-      }
-      @media (min-width: 640px) {
-        .page-shell {
-          padding-left: 1.5rem;
-          padding-right: 1.5rem;
-        }
-      }
-      @media (min-width: 1024px) {
-        .page-shell {
-          padding-left: 2rem;
-          padding-right: 2rem;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div id="root"></div>
