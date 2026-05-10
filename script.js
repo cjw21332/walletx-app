@@ -362,7 +362,8 @@ function App() {
       'pressure': 'fas fa-arrow-down',
       'eye': 'fas fa-eye',
       'water': 'fas fa-droplet',
-      'wind-dir': 'fas fa-compass'
+      'wind-dir': 'fas fa-compass',
+      'reload': 'fas fa-arrows-rotate'
     }
     return icons[name] || 'fas fa-circle'
   }
@@ -484,6 +485,12 @@ function App() {
     setLocations((prev) => prev.filter(loc => loc.id !== id))
   }
 
+  const handleReload = () => {
+    if (selectedLocation && selectedLocation.lat && selectedLocation.lon) {
+      loadWeather(selectedLocation)
+    }
+  }
+
   const onTouchStart = (e) => {
     touchStartX.current = e.changedTouches[0].screenX
   }
@@ -553,6 +560,14 @@ function App() {
           <h1 className="text-2xl sm:text-3xl font-bold text-white mt-2">Real time delivery of weather on your Phone</h1>
         </div>
         <div className="flex gap-2 flex-wrap sm:flex-nowrap">
+          <button
+            onClick={handleReload}
+            disabled={loading}
+            className="inline-flex items-center gap-2 rounded-full border border-green-400/30 bg-green-400/10 px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-green-200 transition-all hover:bg-green-400/20 active:scale-95 disabled:opacity-50"
+          >
+            <Icon className={`text-lg ${getUtilityIcon('reload')} ${loading ? 'animate-spin' : ''}`} />
+            <span className="hidden sm:inline">Reload</span>
+          </button>
           <button
             onClick={() => setShowSettings(!showSettings)}
             className="inline-flex items-center gap-2 rounded-full border border-purple-400/30 bg-purple-400/10 px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-purple-200 transition-all hover:bg-purple-400/20 active:scale-95"
@@ -679,7 +694,7 @@ function App() {
               <div key={index} className="min-w-[85px] rounded-2xl border border-white/10 bg-slate-900/70 p-3 text-center hover-lift sm:min-w-0 transition-all">
                 <p className="text-xs text-slate-400 font-medium">{new Date(hour.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                 <div className="my-2 text-2xl"><Icon className={getWeatherIcon(hour.code)} /></div>
-                <p className="text-xs sm:text-sm font-bold text-slate-200">{convertTemp(hour.temp)}${getTempUnit()}</p>
+                <p className="text-xs sm:text-sm font-bold text-slate-200">{convertTemp(hour.temp)}{getTempUnit()}</p>
               </div>
             ))}
           </div>
